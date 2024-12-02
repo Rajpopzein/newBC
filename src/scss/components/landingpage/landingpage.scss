@@ -1,0 +1,40 @@
+@use "../../defaults/color_variable" as color;
+@use "../../defaults/fonts";
+
+.main-landingpage {
+  padding: 2rem 1rem 1rem 3rem;
+  background: url(../../../assets/200.png) !important;
+  height: 100svh !important;
+  background-color: color.$black;
+}
+.landingpage-navmain {
+  position: sticky !important;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .navlist {
+    margin-left: 1.2rem;
+    ul {
+      display: flex !important;
+      gap: 3.6rem;
+      list-style-type: none;
+      li a {
+        text-decoration: none;
+        color: color.$black;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+    }
+  }
+  .action-btns {
+    display: flex;
+    gap: 1rem;
+    .signup-btn {
+      background-color: color.$primary;
+    }
+    .login-btn {
+      border-color: color.$secondary;
+      color: color.$accent;
+    }
+  }
+}

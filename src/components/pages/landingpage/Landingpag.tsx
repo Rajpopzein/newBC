@@ -3,10 +3,11 @@ import { Button, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import Marquee from "@/components/ui/marquee.tsx";
 import { cn } from "@/lib/utils";
-// import bullish from "../../../assets/stock.png";
+import bullish from "../../../assets/bullish.png";
 import { AiOutlineStock } from "react-icons/ai";
 import { FaLightbulb } from "react-icons/fa6";
 import { FaMagnifyingGlassChart } from "react-icons/fa6";
+import SessionLayout from "@/components/landingpage/session/SessionLayout.tsx";
 
 const reviews = [
   {
@@ -46,7 +47,7 @@ const ReviewCard = ({
   return (
     <figure
       className={cn(
-        "relative h-40 w-36 cursor-pointer overflow-hidden rounded-xl border p-4",
+        "relative h-40 w-70 cursor-pointer overflow-hidden rounded-xl border p-4",
         // light styles
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         // dark styles
@@ -84,8 +85,12 @@ const Landingpag = () => {
               <Button variant="contained" className="explore-btn">
                 Lets's Explore
               </Button>
-              <Button startIcon={<PersonIcon />} className="contactbtn">
-                Contact
+              <Button
+                startIcon={<PersonIcon />}
+                variant="outlined"
+                className="contactbtn"
+              >
+                Contact Us
               </Button>
             </div>
           </div>
@@ -104,41 +109,60 @@ const Landingpag = () => {
           </div>
         </section>
         <section className="about-section">
-          <Typography variant="h5" className="sectionHeader">
-            Our Areas of <span className="subcardheading">Expertise</span>
-          </Typography>
-          <div className="area-of-content">
-            <div className="flex flex-col justify-center items-center content-container">
-              {/* <img alt="area-image" src={bullish} className="imagediv content1" /> */}
-              <AiOutlineStock className="imagediv content1" />
-              <Typography variant="subtitle1">Lorem ipsum dolor</Typography>
-              <Typography variant="subtitle2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                facilisi. Sed auctor neque vel lectus auctor, ac ultricies felis
-                ullamcorper. Nulla facilisi.
+          <SessionLayout heading=" Our Areas of" spanHeader="Expertise">
+            <div className="area-of-content">
+              <div className="flex flex-col justify-center items-center content-container">
+                <AiOutlineStock className="imagediv content1" />
+                <Typography variant="subtitle1">Lorem ipsum dolor</Typography>
+                <Typography variant="subtitle2">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                  facilisi. Sed auctor neque vel lectus auctor, ac ultricies
+                  felis ullamcorper. Nulla facilisi.
+                </Typography>
+              </div>
+              <div className="flex flex-col justify-center items-center content-container">
+                <FaLightbulb className="imagediv content2" />
+                <Typography variant="subtitle1">Lorem ipsum dolor</Typography>
+                <Typography variant="subtitle2">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                  facilisi. Sed auctor neque vel lectus auctor, ac ultricies
+                  felis ullamcorper. Nulla facilisi.
+                </Typography>
+              </div>
+              <div className="flex flex-col justify-center items-center content-container">
+                <FaMagnifyingGlassChart className="imagediv content3" />
+                <Typography variant="subtitle1">Lorem ipsum dolor</Typography>
+                <Typography variant="subtitle2">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                  facilisi. Sed auctor neque vel lectus auctor, ac ultricies
+                  felis ullamcorper. Nulla facilisi.
+                </Typography>
+              </div>
+            </div>
+          </SessionLayout>
+        </section>
+        <section className="about-section section-2">
+          <SessionLayout>
+            <div className="section2-image">
+            <img alt="bulls image" src={bullish} />
+            </div>
+            <div className="flex flex-col items-center">
+              <Typography variant="h4" className="header">
+                Financial Freedom could be just one phonecall away…
+              </Typography>
+              <Typography variant="subtitle1" className="subtitlesection2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas magna ligula, rutrum in venenatis aliquet, congue
+                gravida lorem. Aliquam convallis orci a odio imperdiet, nec
+                pharetra odio porta. Aenean quis tincidunt elit. Donec feugiat,
+                justo interdum tincidunt efficitur, tortor diam volutpat libero,
+                sed accumsan erat mauris ac elit. Donec ultricies nisi quis leo
+                aliquam faucibus quis et metus. Donec eget viverra arcu. Duis
+                feugiat diam dolor, sed placerat nibh condimentum ac. Aliquam in
+                rutrum ante.
               </Typography>
             </div>
-            <div className="flex flex-col justify-center items-center content-container">
-              {/* <img alt="area-image" src={bullish} className="imagediv content2" /> */}
-              <FaLightbulb className="imagediv content2" />
-              <Typography variant="subtitle1">Lorem ipsum dolor</Typography>
-              <Typography variant="subtitle2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                facilisi. Sed auctor neque vel lectus auctor, ac ultricies felis
-                ullamcorper. Nulla facilisi.
-              </Typography>
-            </div>
-            <div className="flex flex-col justify-center items-center content-container">
-              {/* <img alt="area-image" src={bullish} className="imagediv content3" /> */}
-              <FaMagnifyingGlassChart className="imagediv content3" />
-              <Typography variant="subtitle1">Lorem ipsum dolor</Typography>
-              <Typography variant="subtitle2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                facilisi. Sed auctor neque vel lectus auctor, ac ultricies felis
-                ullamcorper. Nulla facilisi.
-              </Typography>
-            </div>
-          </div>
+          </SessionLayout>
         </section>
       </div>
     </div>

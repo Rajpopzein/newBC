@@ -1,6 +1,11 @@
 /*--------------------------------------------------------------
 ## Color Variable
 ----------------------------------------------------------------*/
+$primary-color: #ffc744; 
+$primary-dark: #393E46; 
+// Secondary Colors 
+$secondary-light: #EEEEEE;
+$secondary-dark: #222831;
 $white: #ffffff;
 $black: #000;
 $primary: #274760;
@@ -8,7 +13,7 @@ $text-primary: #3bc0c3;
 $secondary: rgba($primary, 0.52);
 $menu_background: #ffffff;
 $side_menu_background: #1a2942;
-$ternary: #b7b7b7;
+$ternary: #a2a2a2;
 $border: #eaeaea;
 $gray: #fafafa;
 $accent: #307bc4;
@@ -17,7 +22,7 @@ $font-family: 'Poppins', sans-serif;
 $font-family-secondary: 'Sarabun', sans-serif;
 $font_color: #051D43;
 $text-color: #2C2C37;
-$somnambulist: #78889B;
+$somnambulist: #b4c7e088;
 $font_6: 0.375rem;
 $font_12: 0.75rem;
 $font_13: 0.813rem;

@@ -1,0 +1,66 @@
+@use "../../defaults/color_variable" as color;
+@use "../../defaults/fonts";
+
+.landingpage-navmain {
+  position: sticky;
+  top: 0;
+  font-family: 'Poppins', sans-serif;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 5%;
+  margin-bottom: 0.5rem;
+  z-index: 1;
+  background-color: #fff;
+  // border-radius: 1.5rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  .navlist {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    ul {
+      display: flex;
+      gap: 5rem;
+      list-style-type: none;
+
+      .active {
+        position: relative;
+
+        &::after {
+          content: "";
+          background-color: color.$primary-color !important;
+          display: inline-block;
+          position: absolute;
+          width: 100%;
+          height: 4px; // Adjust height for the underline effect
+          bottom: 0;
+          left: 0;
+          z-index: 999;
+        }
+      }
+
+      li a {
+        text-decoration: none;
+        color: color.$primary-dark !important;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .action-btns {
+    display: flex;
+    gap: 1rem;
+
+    .signup-btn {
+      background-color: color.$primary-color;
+      color: color.$black;
+      font-weight: 600;
+    }
+
+    .login-btn {
+      border-color: color.$secondary-dark;
+      color: color.$secondary-dark;
+    }
+  }
+}

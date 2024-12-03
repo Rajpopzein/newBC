@@ -3,6 +3,10 @@ import { Button, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import Marquee from "@/components/ui/marquee.tsx";
 import { cn } from "@/lib/utils";
+// import bullish from "../../../assets/stock.png";
+import { AiOutlineStock } from "react-icons/ai";
+import { FaLightbulb } from "react-icons/fa6";
+import { FaMagnifyingGlassChart } from "react-icons/fa6";
 
 const reviews = [
   {
@@ -65,39 +69,78 @@ const ReviewCard = ({
 
 const Landingpag = () => {
   return (
-    <div className="main-landingpage">
+    <div>
       <Navbar />
-      <section className="banner-section">
-        <div className="text-container">
-          <p className="header">
-            <span className="highlighter">BullsCatch</span> Trading Floor
-          </p>
-          <Typography variant="subtitle2" className="secondary-text">
-            learning And earning without risk to personal capital
-          </Typography>
-          <div className="banner-button">
-            <Button variant="contained" className="explore-btn">
-              Lets's Explore
-            </Button>
-            <Button startIcon={<PersonIcon />} className="contactbtn">
-              Contact
-            </Button>
+      <div className="main-landingpage">
+        <section className="banner-section">
+          <div className="text-container">
+            <p className="header">
+              <span className="highlighter">BullsCatch</span> Trading Floor
+            </p>
+            <Typography variant="subtitle2" className="secondary-text">
+              learning And earning without risk to personal capital
+            </Typography>
+            <div className="banner-button">
+              <Button variant="contained" className="explore-btn">
+                Lets's Explore
+              </Button>
+              <Button startIcon={<PersonIcon />} className="contactbtn">
+                Contact
+              </Button>
+            </div>
           </div>
-        </div>
-        {/* <img src="" alt="banner-image"/> */}
-        <div className="marqueediv">
-          <Marquee pauseOnHover className="[--duration:20s]">
-            {firstRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
-            ))}
-          </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s]">
-            {secondRow.map((review) => (
-              <ReviewCard key={review.username} {...review} />
-            ))}
-          </Marquee>
-        </div>
-      </section>
+          {/* <img src="" alt="banner-image"/> */}
+          <div className="marqueediv">
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {firstRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+            <Marquee reverse pauseOnHover className="[--duration:20s]">
+              {secondRow.map((review) => (
+                <ReviewCard key={review.username} {...review} />
+              ))}
+            </Marquee>
+          </div>
+        </section>
+        <section className="about-section">
+          <Typography variant="h5" className="sectionHeader">
+            Our Areas of <span className="subcardheading">Expertise</span>
+          </Typography>
+          <div className="area-of-content">
+            <div className="flex flex-col justify-center items-center content-container">
+              {/* <img alt="area-image" src={bullish} className="imagediv content1" /> */}
+              <AiOutlineStock className="imagediv content1" />
+              <Typography variant="subtitle1">Lorem ipsum dolor</Typography>
+              <Typography variant="subtitle2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                facilisi. Sed auctor neque vel lectus auctor, ac ultricies felis
+                ullamcorper. Nulla facilisi.
+              </Typography>
+            </div>
+            <div className="flex flex-col justify-center items-center content-container">
+              {/* <img alt="area-image" src={bullish} className="imagediv content2" /> */}
+              <FaLightbulb className="imagediv content2" />
+              <Typography variant="subtitle1">Lorem ipsum dolor</Typography>
+              <Typography variant="subtitle2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                facilisi. Sed auctor neque vel lectus auctor, ac ultricies felis
+                ullamcorper. Nulla facilisi.
+              </Typography>
+            </div>
+            <div className="flex flex-col justify-center items-center content-container">
+              {/* <img alt="area-image" src={bullish} className="imagediv content3" /> */}
+              <FaMagnifyingGlassChart className="imagediv content3" />
+              <Typography variant="subtitle1">Lorem ipsum dolor</Typography>
+              <Typography variant="subtitle2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                facilisi. Sed auctor neque vel lectus auctor, ac ultricies felis
+                ullamcorper. Nulla facilisi.
+              </Typography>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

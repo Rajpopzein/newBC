@@ -1,10 +1,14 @@
 import { Button } from "@mui/material";
+import logo from "../../assets/Bulls-catch-logo-transparent.png"
 import React from "react";
 
 const Navbar = () => {
   return (
     <div className="landingpage-navmain">
-      <img className="" src="" alt="logo" />
+      <div style={{width:'66px', height:'33px'}}>
+ <img className="logo" src={logo} alt="logo" />
+      </div>
+     
       <div className="navlist">
         <ul>
           <li className="active">

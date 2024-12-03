@@ -2,54 +2,56 @@
 @use "../../defaults/fonts";
 
 .main-landingpage {
-  padding: 2rem 1rem 1rem 3rem;
-  background: url('../../../assets/background.png') no-repeat center center !important;
+  // padding: 2rem 1rem 1rem 3rem;
+  background: url("../../../assets/background.png") no-repeat center center !important;
   background-size: cover;
   height: 100svh !important;
-  background-color: color.$white !important; 
-  font-family: 'Poppins', sans-serif;
-  .banner-section{
+  background-color: color.$white !important;
+  font-family: "Poppins", sans-serif;
+  .banner-section {
     padding: 1rem 7%;
-    height: 70%;
+    height: 90%;
     display: flex;
     align-items: center;
-    gap: 10%;
-    .text-container{
+    // justify-content: space-between;
+    gap: 15%;
+    .text-container {
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    .header{
+    .header {
       font-size: 85px;
       width: 600px;
       line-height: 6rem;
       margin-bottom: 1rem;
       font-weight: 700;
-      .highlighter{
+      color: color.$primary-dark;
+      .highlighter {
         color: color.$text-primary;
         text-shadow: 1px 8px 16px color.$somnambulist;
       }
     }
-    .secondary-text{
+    .secondary-text {
       font-family: color.$font-family-secondary;
       font-size: 17px;
       font-weight: 100;
       color: color.$ternary;
-      
+      margin-left: 0px !important;
     }
-    .banner-button{
+    .banner-button {
       margin-top: 1.5rem;
       display: flex;
       gap: 3%;
-      .explore-btn{
+      .explore-btn {
         padding: 0.5rem 2rem;
         font-family: color.$font-family-secondary !important;
         font-weight: 700 !important;
         background-color: color.$primary;
         border-radius: 13px;
       }
-      .contactbtn{
+      .contactbtn {
         padding: 0.5rem 2rem;
         font-family: color.$font-family-secondary !important;
         font-weight: 700 !important;
@@ -57,66 +59,55 @@
         border-color: color.$primary-color;
       }
     }
-    .marqueediv{
+    .marqueediv {
       display: flex;
       // margin-top: 84% !important;
-      height: 155%;
+      // gap: 10%;
+      width: 100%;
+      gap: 5%;
+      height: 100%;
     }
   }
-}
-
-.landingpage-navmain {
-  position: sticky !important;
-  font-family: 'Poppins', sans-serif;
-  max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 7%;
-  margin-bottom: 1.5rem;
-  z-index: 1;
-  background-color: #fff;  
-  // border-radius: 1.5rem;
-  .navlist {
-    ul {
-      display: flex !important;
-      gap: 3.6rem;
-      list-style-type: none;
-      .active{
-        position: relative;
-        &::after{
-          content: "";
-          background-color: color.$primary-color !important;
-          display: inline-block;
-          position: absolute;
-          width: 100% !important;
-          z-index: 999;
-          height: 10% !important;
-          bottom: 0;
-          left: 0;
-          top: 1.5rem;
-        };
-      };
-      
-      li a {
-        text-decoration: none;
-        color: color.$black !important;
-        font-size: 1.2rem;
-        font-weight: 500;
-        
+  .about-section {
+    padding: 1rem 7%;
+    margin-top: 3rem;
+    // background-color: color.$shade;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: color.$primary-dark;
+    .sectionHeader {
+      font-weight: 600;
+      letter-spacing: 0.1rem;
+      font-size: 25px;
+      .subcardheading {
+        color: color.$text-primary;
       }
     }
-  }
-  .action-btns {
-    display: flex;
-    gap: 1rem;
-    .signup-btn {
-      background-color: color.$primary-color;
-      color: color.$black;
-      font-weight: 600;
-    }
-    .login-btn {
-      border-color: color.$secondary-dark;
-      color: color.$secondary-dark;
+    .area-of-content {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 5rem;
+      gap: 4.5rem;
+      .content1 {
+        background-color: color.$primary-color;
+      }
+      .content2 {
+        background-color: color.$primary;
+      }
+      .content3 {
+        background-color: color.$text-primary;
+      }
+      .imagediv {
+        height: 70px;
+        width: 70px;
+        padding: 0.9rem;
+        border-radius: 1rem;
+        color: color.$white;
+      }
+      .content-container {
+        gap: 1rem;
+        color: color.$secondary-dark;
+      }
     }
   }
 }

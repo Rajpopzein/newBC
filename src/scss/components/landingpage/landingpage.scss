@@ -13,7 +13,7 @@
     height: 70%;
     display: flex;
     align-items: center;
-    gap: 15%;
+    gap: 10%;
     .text-container{
       height: 100%;
       display: flex;
@@ -21,8 +21,9 @@
       justify-content: center;
     }
     .header{
-      font-size: 90px;
+      font-size: 85px;
       width: 600px;
+      line-height: 6rem;
       margin-bottom: 1rem;
       font-weight: 700;
       .highlighter{
@@ -56,6 +57,11 @@
         border-color: color.$primary-color;
       }
     }
+    .marqueediv{
+      display: flex;
+      // margin-top: 84% !important;
+      height: 155%;
+    }
   }
 }
 
@@ -65,8 +71,11 @@
   max-width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0px 7%;
+  padding: 1rem 7%;
   margin-bottom: 1.5rem;
+  z-index: 1;
+  background-color: #fff;  
+  // border-radius: 1.5rem;
   .navlist {
     ul {
       display: flex !important;

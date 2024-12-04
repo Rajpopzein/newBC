@@ -1,0 +1,22 @@
+@use "../../defaults/color_variable" as color;
+@use "../../defaults/fonts";
+
+.footermain{
+    background-color: color.$primary-dark;
+    padding: 3% 7%;
+    .footer-icon-color{
+        color: color.$white;
+        font-size: larger;
+    }
+    .footer-tearms, .para-footer, .list{
+        color: color.$white;
+    }
+    .logoimage{
+        margin-left: -14%;
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+}

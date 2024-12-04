@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import logo from "../../assets/Bulls-catch-logo-transparent.png"
-import React from "react";
+
 
 const Navbar = () => {
   return (

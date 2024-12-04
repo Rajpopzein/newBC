@@ -131,7 +131,25 @@
       text-align: left;
     }
   }
-  // .section-3{
-  //   // position: relative;
-  // }
+  .section-3{
+    // position: relative;
+    .header{
+      margin-bottom: 1.5rem;
+      color: color.$primary-color;
+      text-align: left !important;
+    }
+    .subtitlesection3{
+      line-height: 1.7rem;
+      text-align: left;
+      color: color.$secondary;
+    }
+    .imagecircular{
+      border-radius: 100%;
+      border: 1px solid;
+      overflow: hidden;
+      border-color: color.$secondary;
+      height: 300px;
+      width: 300px;
+    }
+  }
 }

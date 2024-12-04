@@ -4,11 +4,13 @@ import PersonIcon from "@mui/icons-material/Person";
 import Marquee from "@/components/ui/marquee.tsx";
 import { cn } from "@/lib/utils";
 import bullish from "../../../assets/bullish.png";
+import testimonial from "../../../assets/testimonial-image.jpg";
 import { AiOutlineStock } from "react-icons/ai";
 import { FaLightbulb } from "react-icons/fa6";
 import { FaMagnifyingGlassChart } from "react-icons/fa6";
 import SessionLayout from "@/components/landingpage/session/SessionLayout.tsx";
-import OrbitingCircles from "@/components/ui/orbiting-circles";
+import Footer from "@/components/landingpage/Footer.tsx";
+// import OrbitingCircles from "@/components/ui/orbiting-circles";
 
 const reviews = [
   {
@@ -173,15 +175,33 @@ const Landingpag = () => {
             </div>
           </SessionLayout>
         </section>
-        <section className="about-section section-3 flex relative justify-center items-center gap-[25%]">
-          <div className="w-[50%]">
-            <Typography>
+        <section className="about-section section-3 flex relative justify-center items-center gap-[15%]">
+          <div className="w-[100%] section3">
+            <Typography variant="h4" className="header">
               Financial Freedom could be just one phonecall away…
             </Typography>
+            <Typography
+              variant="subtitle1"
+              className="text-left .subtitlesection3"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+              magna ligula, rutrum in venenatis aliquet, congue gravida lorem.
+              Aliquam convallis orci a odio imperdiet, nec pharetra odio porta.
+              Aenean quis tincidunt elit. Donec feugiat, justo interdum
+              tincidunt efficitur, tortor diam volutpat libero, sed accumsan
+              erat mauris ac elit. Donec ultricies nisi quis leo aliquam
+              faucibus quis et metus. Donec eget viverra arcu. Duis feugiat diam
+              dolor, sed placerat nibh condimentum ac. Aliquam in rutrum ante.
+            </Typography>
           </div>
-          <div className="h-30 w-[50%] ">
-           <img alt="section3img" src={bullish}/>
+          <div>
+            <div className="imagecircular">
+              <img alt="section3img" src={testimonial} />
+            </div>
           </div>
+        </section>
+        <section>
+          <Footer/>
         </section>
       </div>
     </div>

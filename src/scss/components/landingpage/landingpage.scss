@@ -5,16 +5,16 @@
   // padding: 2rem 1rem 1rem 3rem;
   background: url("../../../assets/background.png") no-repeat center center !important;
   background-size: cover;
-  height: 100svh !important;
+  height: 100% !important;
   background-color: color.$white !important;
   font-family: "Poppins", sans-serif;
   .banner-section {
     padding: 1rem 7%;
-    height: 90%;
+    height: 90% !important;
     display: flex;
     align-items: center;
     // justify-content: space-between;
-    gap: 15%;
+    gap: 5%;
     .text-container {
       height: 100%;
       display: flex;
@@ -114,7 +114,7 @@
     background-color: color.$shade;
     display: flex;
     padding-top: 3rem;
-    margin-top: 9rem;
+    margin-top: 6rem;
     align-items: center;
     justify-content: center;
     .header{
@@ -127,7 +127,11 @@
       margin-right: 10%;
     }
     .subtitlesection2{
-      line-height: 2rem;
+      line-height: 1.7rem;
+      text-align: left;
     }
   }
+  // .section-3{
+  //   // position: relative;
+  // }
 }

@@ -6,9 +6,8 @@ const Navbar = () => {
   return (
     <div className="landingpage-navmain">
       <div style={{width:'66px', height:'33px'}}>
- <img className="logo" src={logo} alt="logo" />
+        <img className="logo" src={logo} alt="logo" />
       </div>
-     
       <div className="navlist">
         <ul>
           <li className="active">

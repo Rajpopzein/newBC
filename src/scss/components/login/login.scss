@@ -1,0 +1,88 @@
+@use "../../defaults/color_variable" as varcolor;
+@use "../../defaults/fonts";
+
+.login-main {
+  height: 100svh;
+  display: flex;
+  gap:10%;
+  overflow: hidden;
+//   margin-top: -0.25rem;
+//   justify-content: center;
+  align-items: center;
+  font-family: varcolor.$font-family;
+  color: varcolor.$primary-dark;
+//   background-image: url("/hero.svg");
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+  .centercard{
+    border-radius: 1.5rem 0rem 0rem 1.5rem;
+  }
+  .login-img{
+    // height: 100%;
+    font-weight: bold;
+    width: 45%;
+    // border-radius: 1.5rem 0rem 0rem 1.5rem;
+  }
+  .login-card {
+    .signup-txt{
+        color: varcolor.$primary-color
+    }
+    .login-close-btn{
+        color: varcolor.$primary-dark;
+        margin-left: 5%;
+        height: 1.5rem;
+    }
+    color: varcolor.$primary-dark;
+    padding: 1.6rem;
+    background-color: #ffffff00;
+    box-shadow: none;
+    width: 35%;
+    .login-header {
+      text-align: center;
+      font-weight: bold;
+    }
+    .login-form {
+      .textbtwline {
+        font-size: 0.7rem;
+        color: varcolor.$ternary;
+        margin: 0.6rem 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &::before,
+        &::after {
+          content: "";
+          flex: 1;
+          border-bottom: 1px solid varcolor.$ternary;
+        }
+        &::after {
+          margin-left: 10px;
+        }
+        &:before {
+          margin-right: 10px;
+        }
+      }
+      .google-btn {
+        background-color: varcolor.$secondary-shade;
+        margin: 0.5rem 0rem;
+        border-radius: 14px;
+        color: varcolor.$primary-dark;
+        box-shadow: none;
+      }
+      .form-input {
+        margin: 0.5rem 0rem;
+        padding: 0.7rem;
+        background-color: varcolor.$shade;
+        border-radius: 6px;
+      }
+      .login-btn {
+        background-color: varcolor.$primary-dark;
+        margin: 0.5rem 0rem;
+      }
+    }
+    .login-footer {
+      margin: 0.5rem 0rem;
+    }
+  }
+}

@@ -1,22 +1,49 @@
 @use "../../defaults/color_variable" as color;
 @use "../../defaults/fonts";
 
-.footermain{
-    background-color: color.$primary-dark;
-    padding: 3% 7%;
-    .footer-icon-color{
-        color: color.$white;
-        font-size: larger;
+.footermain {
+  background-color: color.$primary-dark;
+  padding: 3% 7%;
+
+  @media (max-width: 768px) {
+    padding: 5% 3%;
+    text-align: center;
+  }
+
+  .footer-icon-color {
+    color: color.$white;
+    font-size: larger;
+
+    @media (max-width: 768px) {
+      font-size: medium;
     }
-    .footer-tearms, .para-footer, .list{
-        color: color.$white;
+  }
+
+  .footer-tearms, .para-footer, .list {
+    color: color.$white;
+
+    @media (max-width: 768px) {
+      font-size: small;
     }
-    .logoimage{
-        margin-left: -14%;
+  }
+
+  .logoimage {
+    margin-left: -14%;
+
+    @media (max-width: 768px) {
+      margin-left: 0;
+      margin-bottom: 1rem;
     }
-    .list{
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    @media (max-width: 768px) {
+      align-items: center;
+      gap: 0.5rem;
     }
+  }
 }

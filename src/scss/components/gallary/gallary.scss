@@ -1,0 +1,31 @@
+@use "../../defaults/color_variable" as color_variable;
+
+.Gallary-main {
+  // height: 90vh;
+  padding: 3%;
+  .header {
+    color: color_variable.$primary;
+    margin-bottom: 1rem;
+  }
+  .galleryImages {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr ));
+    align-items: start;
+    gap: 24px 6px;
+    padding: 16px;
+  }
+  .galleryItem {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .galleryImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .galleryImage:hover {
+    transform: scale(1.1);
+  }
+}

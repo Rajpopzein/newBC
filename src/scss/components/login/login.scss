@@ -4,44 +4,76 @@
 .login-main {
   height: 100svh;
   display: flex;
-  gap:10%;
+  gap: 10%;
+  margin-top: -4.8rem;
   overflow: hidden;
-//   margin-top: -0.25rem;
-//   justify-content: center;
   align-items: center;
   font-family: varcolor.$font-family;
   color: varcolor.$primary-dark;
-//   background-image: url("/hero.svg");
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
-  .centercard{
-    border-radius: 1.5rem 0rem 0rem 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-top: 10%;
+    flex-direction: column;
+    gap: 5%;
   }
-  .login-img{
-    // height: 100%;
+
+  .error {
+    font-family: varcolor.$font-family-secondary;
+    color: varcolor.$errored-dark;
+    font-size: small;
+  }
+
+  .centercard {
+    border-radius: 1.5rem 0rem 0rem 1.5rem;
+
+    @media (max-width: 768px) {
+      border-radius: 1.5rem 1.5rem 0rem 0rem;
+    }
+  }
+
+  .login-img {
     font-weight: bold;
     width: 45%;
-    // border-radius: 1.5rem 0rem 0rem 1.5rem;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      height: auto;
+      display: none;
+    }
   }
+
   .login-card {
-    .signup-txt{
-        color: varcolor.$primary-color
-    }
-    .login-close-btn{
-        color: varcolor.$primary-dark;
-        margin-left: 5%;
-        height: 1.5rem;
-    }
-    color: varcolor.$primary-dark;
+    width: 35%;
     padding: 1.6rem;
     background-color: #ffffff00;
     box-shadow: none;
-    width: 35%;
-    .login-header {
-      text-align: center;
-      font-weight: bold;
+    color: varcolor.$primary-dark;
+
+    @media (max-width: 768px) {
+      width: 90%;
     }
+
+    .signup-txt {
+      color: varcolor.$primary-color;
+    }
+
+    .login-close-btn,
+    .signup-close-btn {
+      color: varcolor.$primary-dark;
+      height: 1.5rem;
+
+      @media (max-width: 768px) {
+        height: 1rem;
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+    }
+
+    .login-header {
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
     .login-form {
       .textbtwline {
         font-size: 0.7rem;
@@ -63,6 +95,7 @@
           margin-right: 10px;
         }
       }
+
       .google-btn {
         background-color: varcolor.$secondary-shade;
         margin: 0.5rem 0rem;
@@ -70,17 +103,24 @@
         color: varcolor.$primary-dark;
         box-shadow: none;
       }
+
       .form-input {
         margin: 0.5rem 0rem;
         padding: 0.7rem;
         background-color: varcolor.$shade;
         border-radius: 6px;
+
+        @media (max-width: 768px) {
+          padding: 0.5rem;
+        }
       }
+
       .login-btn {
         background-color: varcolor.$primary-dark;
         margin: 0.5rem 0rem;
       }
     }
+
     .login-footer {
       margin: 0.5rem 0rem;
     }

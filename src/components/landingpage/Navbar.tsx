@@ -2,8 +2,11 @@ import { Button } from "@mui/material";
 import logo from "../../assets/Bulls-catch-logo-transparent.png"
 import { useNavigate } from "react-router";
 
+interface active {
+  index? : number;
+}
 
-const Navbar = () => {
+const Navbar = (props:active) => {
   const navigate = useNavigate()
 
   return (
@@ -13,11 +16,11 @@ const Navbar = () => {
       </div>
       <div className="navlist">
         <ul>
-          <li className="active">
-            <a onClick={()=>navigate('/')}>About</a>
+          <li className={props.index == 1 ? "active" : ''}>
+            <a  href="#" onClick={()=>navigate('/')}>About</a>
           </li>
-          <li>
-            <a href="#">Product</a>
+          <li  className={props.index == 2 ? "active" : ''}>
+            <a href="#" onClick={()=>navigate('/gallery')}>Gallary</a>
           </li>
           <li>
             <a href="#">Pricing</a>
@@ -29,7 +32,7 @@ const Navbar = () => {
       </div>
       <div className="action-btns">
         <Button variant="outlined" className="login-btn" onClick={()=>navigate("/login")}>Login</Button>
-        <Button variant="contained" className="signup-btn">SignUp</Button>
+        <Button variant="contained" className="signup-btn" onClick={()=>navigate("/signup")}>SignUp</Button>
       </div>
     </div>
   );

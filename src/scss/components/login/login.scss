@@ -4,7 +4,8 @@
 .login-main {
   height: 100svh;
   display: flex;
-  gap: 10%;
+//   gap: 7%;
+  justify-content: space-between;
   margin-top: -4.8rem;
   overflow: hidden;
   align-items: center;
@@ -43,12 +44,13 @@
   }
 
   .login-card {
-    width: 35%;
-    padding: 1.6rem;
+    width: 50%;
+    height: 100%;
+    padding: 8% 6rem;
     background-color: #ffffff00;
     box-shadow: none;
     color: varcolor.$primary-dark;
-
+    overflow-y: scroll;
     @media (max-width: 768px) {
       width: 90%;
     }
@@ -124,5 +126,15 @@
     .login-footer {
       margin: 0.5rem 0rem;
     }
+  }
+  .login-card::-webkit-scrollbar {
+    width: 0.7rem;
+    background-color: #a2a2a29d;
+  }
+  .login-card::-webkit-scrollbar-thumb {
+    background: #274760;
+    border-radius: 5px;
+    height: 1rem !important;
+    width: 0.51rem !important ;
   }
 }

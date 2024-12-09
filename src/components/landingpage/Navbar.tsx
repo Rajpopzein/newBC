@@ -17,13 +17,13 @@ const Navbar = (props:active) => {
       <div className="navlist">
         <ul>
           <li className={props.index == 1 ? "active" : ''}>
-            <a  href="#" onClick={()=>navigate('/')}>About</a>
+            <a  onClick={()=>navigate('/')}>About</a>
           </li>
           <li  className={props.index == 2 ? "active" : ''}>
-            <a href="#" onClick={()=>navigate('/gallery')}>Gallary</a>
+            <a  onClick={()=>navigate('/gallery')}>Gallary</a>
           </li>
-          <li>
-            <a href="#">Pricing</a>
+          <li className={props.index == 3 ? "active" : ''}>
+            <a onClick={()=>{navigate('/faq')}}>FAQ</a>
           </li>
           <li>
             <a href="#">Support</a>

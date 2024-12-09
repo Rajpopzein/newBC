@@ -1,6 +1,8 @@
 import { Button } from "@mui/material";
 import logo from "../../assets/Bulls-catch-logo-transparent.png"
 import { useNavigate } from "react-router";
+import ModelContact from "./modelContact/ModelContact";
+import { useState } from "react";
 
 interface active {
   index? : number;
@@ -8,9 +10,10 @@ interface active {
 
 const Navbar = (props:active) => {
   const navigate = useNavigate()
-
+  const [contactTrigger, setContactTrigger] = useState<boolean>(false)
   return (
     <div className="landingpage-navmain">
+      <ModelContact isOpen={contactTrigger} onClose={setContactTrigger}/>
       <div style={{width:'66px', height:'33px'}}>
         <img className="logo" src={logo} alt="logo" />
       </div>
@@ -26,7 +29,7 @@ const Navbar = (props:active) => {
             <a onClick={()=>{navigate('/faq')}}>FAQ</a>
           </li>
           <li>
-            <a href="#">Support</a>
+            <a onClick={()=>(setContactTrigger(true))}>Contact</a>
           </li>
         </ul>
       </div>

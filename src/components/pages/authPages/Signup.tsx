@@ -1,4 +1,3 @@
-import React from "react";
 import AuthLayOut from "@/components/layout/AuthLayOut";
 import { Button, Typography } from "@mui/material";
 import { useFormik } from "formik";

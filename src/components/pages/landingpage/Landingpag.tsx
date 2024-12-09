@@ -75,6 +75,7 @@ const Landingpag = () => {
   return (
     <div style={{ height: "100svh" }}>
       <Navbar index={1}/>
+      
       <div className="main-landingpage">
         <section className="banner-section">
           <div className="text-container">

@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "./../../assets/Bulls-catch-logo.png";
 import { FaFacebookSquare, FaInstagram } from "react-icons/fa";
 import { FaSquareTwitter } from "react-icons/fa6";

@@ -1,0 +1,6 @@
+@use "../../../defaults/color_variable";
+
+.callback-btn{
+    background-color: color_variable.$primary-color;
+    color: color_variable.$primary;
+}

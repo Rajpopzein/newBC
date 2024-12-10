@@ -6,6 +6,7 @@ import Signup from './components/pages/authPages/Signup.tsx';
 const LandingPage = lazy(() => import('./components/pages/landingpage/Landingpag.tsx'));
 const GalleryPage = lazy(() => import('./components/pages/galleryPage/GalleryPage.tsx'));
 const Faq = lazy(() => import('./components/pages/faqPage/FaqPage.tsx'));
+const CreateRole = lazy(() => import('./components/pages/stratagyPage/CreateRulePage.tsx'));
 
 const Router = () => {
   return (
@@ -26,6 +27,11 @@ const Router = () => {
       <Route path='/faq' element={
         <Suspense fallback={<div>Loading...</div>}>
           <Faq />
+        </Suspense>
+      }/>
+      <Route path='/chart' element={
+        <Suspense fallback={<div>Loading...</div>}>
+          <CreateRole />
         </Suspense>
       }/>
       <Route path="/login" element={<Login />} />

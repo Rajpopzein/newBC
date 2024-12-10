@@ -11,6 +11,9 @@ import {
 } from "@nextui-org/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { MdOutlineEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaRegClock } from "react-icons/fa6";
 
 type SetBooleanState = (value: boolean) => void;
 
@@ -18,9 +21,14 @@ interface ModalProps {
   isOpen: boolean;
   onClose: SetBooleanState;
 }
+interface contactDetails {
+  email: string;
+  mobile: string;
+}
 
 const ModalContact = ({ isOpen, onClose }: ModalProps) => {
-  const [textToCopy, setTextToCopy] = useState<any>({
+  
+  const [textToCopy] = useState<contactDetails>({
     email: "info@bullscatchsecurities.com",
     mobile: "9718929008",
   });
@@ -73,11 +81,11 @@ const ModalContact = ({ isOpen, onClose }: ModalProps) => {
           <>
             <ModalHeader className="flex flex-col gap-1">Contact Us !</ModalHeader>
             <ModalBody>
-              <p>
-                <p>{textToCopy.email}</p>
-                <p>{textToCopy.mobile}</p>
-                <p>Available Mon-Fri: 9:00AM – 6:00PM</p>
-              </p>
+              <div>
+                <Typography variant="caption" className="flex items-center gap-2"><MdOutlineEmail/> {textToCopy.email}</Typography><br/>
+                <Typography variant="caption" className="flex items-center gap-2"><FaPhoneAlt/> {textToCopy.mobile}</Typography><br/>
+                <Typography variant="caption" className="flex items-center gap-2"><FaRegClock/> Available Mon-Fri: 9:00AM – 6:00PM</Typography>
+              </div>
               <div>
                 <Typography variant="caption">
                   We’ll call you. Request a callback, just drop

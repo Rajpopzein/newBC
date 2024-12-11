@@ -1,0 +1,16 @@
+.main-staticLayout {
+  overflow: hidden;
+  .body-site {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 90vh;
+    padding-bottom: 5rem !important;
+    
+    &::-webkit-scrollbar-thumb {
+      background: #274760;
+      border-radius: 5px;
+      height: 1rem !important;
+      width: 0.51rem !important ;
+    }
+  }
+}

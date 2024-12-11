@@ -4,12 +4,10 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  NavbarMenu,
 } from "@nextui-org/react";
 import { RxAvatar } from "react-icons/rx";
 import logo from "../../../assets/Bulls-catch-logo.png";
-import Footer from "@/components/landingpage/Footer";
+// import Footer from "@/components/landingpage/Footer";
 import SiteNavbar from "./siteNavbar/SiteNavbar";
 import { IoMenu } from "react-icons/io5";
 
@@ -19,7 +17,7 @@ interface siteinterFace {
 
 const SiteLayOut = ({ children }: siteinterFace) => {
   return (
-    <div>
+    <div className="h-[100vh] flex flex-col main-staticLayout">
       <Navbar position="static" className="site-navbar">
         <NavbarBrand >
           <IoMenu className="text-2xl mr-[5%]"/>
@@ -50,12 +48,11 @@ const SiteLayOut = ({ children }: siteinterFace) => {
           </NavbarItem>
         </NavbarContent>
       </Navbar>
-      <div className="flex h-[100vh]">
+      <div className="flex ">
         <SiteNavbar />
-        <section className="body-site flex-1">{children}</section>
+        <section className="body-site flex-1 h=[100%]">{children}</section>
       </div>
-
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

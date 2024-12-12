@@ -10,6 +10,8 @@ import { FaLightbulb } from "react-icons/fa6";
 import { FaMagnifyingGlassChart } from "react-icons/fa6";
 import SessionLayout from "@/components/landingpage/session/SessionLayout.tsx";
 import Footer from "@/components/landingpage/Footer.tsx";
+import { useEffect, useState } from "react";
+import ModalContact from "@/components/landingpage/modelContact/ModelContact.tsx";
 // import OrbitingCircles from "@/components/ui/orbiting-circles";
 
 const reviews = [
@@ -72,10 +74,14 @@ const ReviewCard = ({
 };
 
 const Landingpag = () => {
+  const [activeContact, setActiveContact] = useState<boolean>(false);
+  useEffect(()=>{
+    console.log(activeContact,"activeContact")
+  },[activeContact])
   return (
     <div style={{ height: "100svh" }}>
       <Navbar index={1}/>
-      
+      <ModalContact isOpen={activeContact} onClose={setActiveContact}/>
       <div className="main-landingpage">
         <section className="banner-section">
           <div className="text-container">
@@ -93,6 +99,7 @@ const Landingpag = () => {
                 startIcon={<PersonIcon />}
                 variant="outlined"
                 className="contactbtn"
+                onClick={() => setActiveContact(true)}
               >
                 Contact Us
               </Button>
@@ -202,7 +209,7 @@ const Landingpag = () => {
           </div>
         </section>
         <section>
-          <Footer/>
+          <Footer />
         </section>
       </div>
     </div>

@@ -21,7 +21,7 @@ const CreateRulePage = () => {
 
   return (
     <SiteLayOut>
-      <div className="w-full h-full p-[3%] ">
+      <div className="w-full p-[3%]">
         <div className="w-full h-full flex flex-col">
           <h1 className="text-2xl font-bold mb-4">Create Strategy</h1>
           <form>

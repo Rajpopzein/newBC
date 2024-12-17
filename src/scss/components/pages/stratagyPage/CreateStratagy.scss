@@ -3,9 +3,7 @@
   .body-site {
     overflow: scroll;
     overflow-x: hidden;
-    height: 90vh;
-    padding-bottom: 5rem !important;
-    
+    height: calc(100vh - 4rem);
     &::-webkit-scrollbar-thumb {
       background: #274760;
       border-radius: 5px;

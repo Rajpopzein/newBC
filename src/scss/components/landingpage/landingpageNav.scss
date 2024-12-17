@@ -18,6 +18,7 @@
     width: 60%;
     display: flex;
     justify-content: center;
+    align-items: center;
     ul {
       display: flex;
       gap: 5rem;
@@ -35,6 +36,7 @@
           height: 4px; // Adjust height for the underline effect
           bottom: 0;
           left: 0;
+          top: 1.5rem;
           z-index: 999;
         }
       }

@@ -17,7 +17,7 @@ interface siteinterFace {
 
 const SiteLayOut = ({ children }: siteinterFace) => {
   return (
-    <div className="h-[100vh] flex flex-col main-staticLayout">
+    <div className="flex flex-col main-staticLayout">
       <Navbar position="static" className="site-navbar">
         <NavbarBrand >
           <IoMenu className="text-2xl mr-[5%]"/>
@@ -50,7 +50,7 @@ const SiteLayOut = ({ children }: siteinterFace) => {
       </Navbar>
       <div className="flex">
         <SiteNavbar />
-        <section className="body-site flex-1 h-[91.2vh] overflow-y-scroll">{children}</section>
+        <section className="body-site flex-1 h-[100vh] overflow-y-scroll">{children}</section>
       </div>
       
       {/* <Footer /> */}

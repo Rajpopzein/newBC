@@ -2,10 +2,11 @@ import logo from "./../../assets/Bulls-catch-logo.png";
 import { FaFacebookSquare, FaInstagram } from "react-icons/fa";
 import { FaSquareTwitter } from "react-icons/fa6";
 import { Typography } from "@mui/material";
-
+import { useNavigate } from "react-router";
 // type Props = {}
 
 const Footer = () => {
+  const navigate = useNavigate()
   return (
     <div className="footermain">
       <div className="header flex">
@@ -24,9 +25,9 @@ const Footer = () => {
         </div>
         <div className="w-[10%] mt-3">
           <ul className="list">
-            <li>Home</li>
-            <li>Gallary</li>
-            <li>Contact us</li>
+            <li onClick={()=>navigate("/")}>Home</li>
+            <li onClick={()=>navigate("/gallery")}>Gallary</li>
+            {/* <li>Contact us</li> */}
           </ul>
         </div>
       </div>

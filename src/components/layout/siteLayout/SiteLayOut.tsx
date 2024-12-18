@@ -4,8 +4,8 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  Avatar
 } from "@nextui-org/react";
-import { RxAvatar } from "react-icons/rx";
 import logo from "../../../assets/Bulls-catch-logo.png";
 // import Footer from "@/components/landingpage/Footer";
 import SiteNavbar from "./siteNavbar/SiteNavbar";
@@ -13,9 +13,10 @@ import { IoMenu } from "react-icons/io5";
 
 interface siteinterFace {
   children: React.ReactNode;
+  activeSidebar? : number;
 }
 
-const SiteLayOut = ({ children }: siteinterFace) => {
+const SiteLayOut = ({ children, activeSidebar }: siteinterFace) => {
   return (
     <div className="h-[100vh] flex flex-col main-staticLayout">
       <Navbar position="static" className="site-navbar">
@@ -44,12 +45,13 @@ const SiteLayOut = ({ children }: siteinterFace) => {
         </NavbarContent> */}
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
-            <RxAvatar />
+            {/* <RxAvatar /> */}
+            <Avatar>R</Avatar>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
       <div className="flex ">
-        <SiteNavbar />
+        <SiteNavbar active={activeSidebar}/>
         <section className="body-site flex-1 h=[100%]">{children}</section>
       </div>
       {/* <Footer /> */}

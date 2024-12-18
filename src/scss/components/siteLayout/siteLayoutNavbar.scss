@@ -7,6 +7,7 @@
     color: color_variable.$white;
     .list-menu-item{
         margin-bottom: 1rem;
+        cursor: pointer;
     }
     .active{
         background-color: color_variable.$secondary-dark;

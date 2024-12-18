@@ -7,6 +7,7 @@ const LandingPage = lazy(() => import('./components/pages/landingpage/Landingpag
 const GalleryPage = lazy(() => import('./components/pages/galleryPage/GalleryPage.tsx'));
 const Faq = lazy(() => import('./components/pages/faqPage/FaqPage.tsx'));
 const CreateRole = lazy(() => import('./components/pages/stratagyPage/CreateRulePage.tsx'));
+const ActiveBot = lazy(() => import('./components/pages/stratagyPage/RuningBot.tsx'));
 
 const Router = () => {
   return (
@@ -32,6 +33,11 @@ const Router = () => {
       <Route path='/chart' element={
         <Suspense fallback={<div>Loading...</div>}>
           <CreateRole />
+        </Suspense>
+      }/>
+      <Route path='/runningbot' element={
+        <Suspense fallback={<div>Loading...</div>}>
+          <ActiveBot />
         </Suspense>
       }/>
       <Route path="/login" element={<Login />} />

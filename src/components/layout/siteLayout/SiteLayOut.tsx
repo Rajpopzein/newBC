@@ -53,9 +53,6 @@ const SiteLayOut = ({ children, activeSidebar }: siteinterFace) => {
       <div className="flex ">
         <SiteNavbar active={activeSidebar}/>
         <section className="body-site flex-1 h=[100%]">{children}</section>
-      <div className="flex">
-        <SiteNavbar />
-        <section className="body-site flex-1 h-[100vh] overflow-y-scroll">{children}</section>
       </div>
       
       {/* <Footer /> */}

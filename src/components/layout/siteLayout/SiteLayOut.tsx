@@ -13,9 +13,10 @@ import { IoMenu } from "react-icons/io5";
 
 interface siteinterFace {
   children: React.ReactNode;
+  isAdmin?: boolean;
 }
 
-const SiteLayOut = ({ children }: siteinterFace) => {
+const SiteLayOut = ({ children, isAdmin }: siteinterFace) => {
   return (
     <div className="flex flex-col main-staticLayout">
       <Navbar position="static" className="site-navbar">
@@ -49,7 +50,7 @@ const SiteLayOut = ({ children }: siteinterFace) => {
         </NavbarContent>
       </Navbar>
       <div className="flex">
-        <SiteNavbar />
+        <SiteNavbar isAdmin={isAdmin}/>
         <section className="body-site flex-1 h-[100vh] overflow-y-scroll">{children}</section>
       </div>
       

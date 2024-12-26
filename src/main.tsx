@@ -8,6 +8,7 @@ import { store } from "./redux/store.tsx";
 import { Provider } from "react-redux";
 import "rsuite/dist/rsuite.min.css";
 import { CustomProvider } from "rsuite";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

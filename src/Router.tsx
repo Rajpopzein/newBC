@@ -7,6 +7,7 @@ const LandingPage = lazy(() => import('./components/pages/landingpage/Landingpag
 const GalleryPage = lazy(() => import('./components/pages/galleryPage/GalleryPage.tsx'));
 const Faq = lazy(() => import('./components/pages/faqPage/FaqPage.tsx'));
 const CreateRole = lazy(() => import('./components/pages/stratagyPage/CreateRulePage.tsx'));
+const UserManagement = lazy(() => import('./components/pages/admin/UserManagement.tsx'));
 
 const Router = () => {
   return (
@@ -19,6 +20,11 @@ const Router = () => {
           </Suspense>
         }
       />
+      <Route path='/admin/users' element={
+        <Suspense fallback={<div>Loading...</div>}>
+          <UserManagement />
+        </Suspense>
+      }/>
       <Route path='/gallery' element={
         <Suspense fallback={<div>Loading...</div>}>
           <GalleryPage />

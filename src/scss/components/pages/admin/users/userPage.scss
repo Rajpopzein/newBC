@@ -1,0 +1,6 @@
+@use "../../../../defaults/color_variable" as color_variable;
+
+.Btn-primary{
+    background-color: color_variable.$text-primary;
+    color: color_variable.$white;
+}

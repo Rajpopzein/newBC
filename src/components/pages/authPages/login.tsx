@@ -41,7 +41,7 @@ const Login = () => {
             Continue to your account.
           </Typography>
           <div className="login-form">
-            <Button className="w-[100%] google-btn p-5" variant="contained">
+            <Button className="w-[100%] google-btn p-2" variant="contained">
               <FcGoogle className="mr-3" /> Log in with Google
             </Button>
             <p className="textbtwline">Or Use Email</p>

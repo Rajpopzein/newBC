@@ -40,7 +40,7 @@ const UserManagement = () => {
   };
 
   return (
-    <SiteLayOut isAdmin>
+    <SiteLayOut>
       <ModelPoper open={modelPopup} handleClose={setModelPopup}>
         <Typography variant="h6" className="mb-2">
           Add user

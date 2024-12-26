@@ -4,8 +4,8 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  Avatar
 } from "@nextui-org/react";
-import { RxAvatar } from "react-icons/rx";
 import logo from "../../../assets/Bulls-catch-logo.png";
 // import Footer from "@/components/landingpage/Footer";
 import SiteNavbar from "./siteNavbar/SiteNavbar";
@@ -13,10 +13,10 @@ import { IoMenu } from "react-icons/io5";
 
 interface siteinterFace {
   children: React.ReactNode;
-  isAdmin?: boolean;
+  activeSidebar? : number;
 }
 
-const SiteLayOut = ({ children, isAdmin }: siteinterFace) => {
+const SiteLayOut = ({ children, activeSidebar }: siteinterFace) => {
   return (
     <div className="flex flex-col main-staticLayout">
       <Navbar position="static" className="site-navbar">
@@ -44,14 +44,15 @@ const SiteLayOut = ({ children, isAdmin }: siteinterFace) => {
           </NavbarItem>
         </NavbarContent> */}
         <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
-            <RxAvatar />
+          <NavbarItem className="hidden lg:flex mt-3">
+            {/* <RxAvatar /> */}
+            <Avatar>R</Avatar>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
-      <div className="flex">
-        <SiteNavbar isAdmin={isAdmin}/>
-        <section className="body-site flex-1 h-[100vh] overflow-y-scroll">{children}</section>
+      <div className="flex ">
+        <SiteNavbar active={activeSidebar}/>
+        <section className="body-site flex-1 h=[100%]">{children}</section>
       </div>
       
       {/* <Footer /> */}

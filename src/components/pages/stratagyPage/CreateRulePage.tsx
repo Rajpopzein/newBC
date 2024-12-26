@@ -378,8 +378,8 @@ const CreateRulePage = () => {
                           value={values.targetSettings.mode}
                           onChange={(e) => handleChange(e)}
                         >
-                          <Radio value={"true"}>Active</Radio>
-                          <Radio value={"false"}>Disable</Radio>
+                          <Radio value="true">Active</Radio>
+                          <Radio value="false">Disable</Radio>
                         </RadioGroup>
                         <Select
                           label="Target Type"
@@ -411,8 +411,8 @@ const CreateRulePage = () => {
                           value={values.stoplossSettings.mode}
                           onChange={(e) => handleChange(e)}
                         >
-                          <Radio value={"true"}>Active</Radio>
-                          <Radio value={"false"}>Disable</Radio>
+                          <Radio value="true">Active</Radio>
+                          <Radio value="false">Disable</Radio>
                         </RadioGroup>
                         <Select
                           label="Stoploss Type"
@@ -443,9 +443,10 @@ const CreateRulePage = () => {
                           name="trailingStoplossSettings.mode"
                           value={values.trailingStoplossSettings.mode}
                           onChange={(e) => handleChange(e)}
+                          defaultValue={"false"}
                         >
-                          <Radio value={"true"}>Active</Radio>
-                          <Radio value={"false"}>Disable</Radio>
+                          <Radio value="true">Active</Radio>
+                          <Radio value="false">Disable</Radio>
                         </RadioGroup>
                         <Select
                           label="Target Type"

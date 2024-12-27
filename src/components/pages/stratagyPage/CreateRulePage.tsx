@@ -1,8 +1,8 @@
 import SiteLayOut from "@/components/layout/siteLayout/SiteLayOut";
 import { ChangeEvent } from "react";
-import { CardHeader, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 // import { TextField } from "@mui/material";
-import { RadioGroup, Radio, CardBody } from "@nextui-org/react";
+import { RadioGroup, Radio } from "@nextui-org/react";
 import {
   Card,
   Input,
@@ -12,8 +12,9 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useState } from "react";
-import { Formik, Form, Field, FieldProps } from "formik";
-import * as Yup from "yup";
+import { Formik, Form } from "formik";
+import axios from "axios";
+// import * as Yup from "yup";
 
 const CreateRulePage = () => {
   const [symboleOptions] = useState<string[]>(["SBIN", "RELIANCE"]);
@@ -25,8 +26,9 @@ const CreateRulePage = () => {
   const [targetType] = useState<string[]>(["Point", "Percentage"]);
   const [selectePeriod, setSelectPeriod] = useState<string>("null");
   const [selectFactor, setSelectFactor] = useState<string>("null");
+  const token = localStorage.getItem("token");
 
-  const initialValues = {
+  let initialValues = {
     strategyName: "",
     description: "",
     symboleSelection: [],
@@ -96,12 +98,23 @@ const CreateRulePage = () => {
   };
 
   const handlePeriodChange = (e: ChangeEvent<any>) => {
-    if (e.target.name === "Setting1") setSelectPeriod(e.target.value);
-    if (e.target.name === "setting2") setSelectFactor(e.target.value);
+    if (e.target.name === "stratagy1.atrPeriod")
+      setSelectPeriod(e.target.value);
+    if (e.target.name === "stratagy1.factor") setSelectFactor(e.target.value);
+    if (e.target.name === "stratagy2.lookBack") setSelectPeriod(e.target.value);
   };
 
-  const handleSubmit = (e: any) => {
-    console.log(e);
+  const handleSubmit = async (data: unknown, resetForm: ()=> void) => {
+    console.log(data);
+    const stratagy = await axios.post("http://localhost:8000/data", data, {
+      headers: {
+        Authorization: `bearer ${token}`,
+      },
+    });
+    if (stratagy.status === 200) {
+      resetForm();
+    }
+    console.log(stratagy);
   };
 
   return (
@@ -109,8 +122,13 @@ const CreateRulePage = () => {
       <div className="w-full p-[3%]">
         <div className="w-full h-full flex flex-col">
           <h1 className="text-2xl font-bold mb-4">Create Strategy</h1>
-          <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-            {({ values, handleChange, errors, touched }) => (
+          <Formik
+            initialValues={initialValues}
+            onSubmit={(values, { resetForm }) =>
+              handleSubmit(values, resetForm)
+            }
+          >
+            {({ values, handleChange}) => (
               <Form>
                 <div className="grid grid-cols-2 gap-[1%] w-full">
                   <Card className="p-3">
@@ -121,7 +139,6 @@ const CreateRulePage = () => {
                         className="mb-4"
                         value={values.strategyName}
                         onChange={handleChange}
-                        
                       />
                       <Textarea
                         maxRows={4}
@@ -235,7 +252,7 @@ const CreateRulePage = () => {
                           </div>
                           <div className="flex gap-3">
                             {selectePeriod != "null" && selectePeriod != "" && (
-                              <Card className="p-3">
+                              <Card className="p-3 flex-1">
                                 <div className="flex gap-3">
                                   <Input
                                     label="Default"
@@ -252,8 +269,8 @@ const CreateRulePage = () => {
                               </Card>
                             )}
                             {selectFactor != "null" && selectFactor != "" && (
-                              <Card className="p-3">
-                                <div className="flex gap-3">
+                              <Card className="p-3 flex-1">
+                                <div className="flex gap-3 flex-1">
                                   <Input
                                     label="Default"
                                     name="stratagy1.factorOption.default"
@@ -323,10 +340,9 @@ const CreateRulePage = () => {
                             </SelectItem>
                           </Select>
                         </div>
-
                         <div className="flex gap-3">
                           {selectePeriod != "null" && selectePeriod != "" && (
-                            <Card className="p-3">
+                            <Card className="p-3 flex-1">
                               <div className="flex gap-3">
                                 <Input
                                   label="Default"
@@ -454,7 +470,9 @@ const CreateRulePage = () => {
                           name="trailingStoplossSettings.type"
                           value={values.trailingStoplossSettings.type}
                           onChange={handleChange}
-                          isDisabled={!Boolean(values.trailingStoplossSettings.mode)}
+                          isDisabled={
+                            !Boolean(values.trailingStoplossSettings.mode)
+                          }
                         >
                           {targetType &&
                             targetType.map((data) => (
@@ -463,7 +481,12 @@ const CreateRulePage = () => {
                               </SelectItem>
                             ))}
                         </Select>
-                        <Input label="Target Value" name="trailingStoplossSettings.value" value={values.trailingStoplossSettings.value} onChange={handleChange}/>
+                        <Input
+                          label="Target Value"
+                          name="trailingStoplossSettings.value"
+                          value={values.trailingStoplossSettings.value}
+                          onChange={handleChange}
+                        />
                       </Card>
                     </div>
 

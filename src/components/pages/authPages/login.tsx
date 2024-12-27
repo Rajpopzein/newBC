@@ -6,10 +6,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import AuthLayOut from "@/components/layout/AuthLayOut";
 import Navbar from "@/components/landingpage/Navbar";
+import axios from "axios";
+
 
 const Login = () => {
   const navigate = useNavigate();
-
+ 
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -23,15 +25,23 @@ const Login = () => {
         .min(6, "Password must be at least 6 characters")
         .required("Password is required"),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log(values);
-      // Handle form submission
+      const payload = { username: values.email, password: values.password };
+      const data = await axios.post("http://localhost:8000/login", payload, {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      });
+      if(data.status === 200){
+        localStorage.setItem("token",data.data.access_token)
+        navigate("/chart")
+      }
+      console.log(data);
     },
   });
 
   return (
     <div className="login-main-box">
-    <Navbar/>
+      <Navbar />
       <AuthLayOut>
         <CardContent>
           <Typography variant="caption" className="login-header">

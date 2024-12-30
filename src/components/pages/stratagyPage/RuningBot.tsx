@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card } from "@nextui-org/react";
+import { Button } from "rsuite";
 
 const RuningBot = () => {
   const [strategyData, setStrategyData] = useState([]);
@@ -51,6 +52,11 @@ const RuningBot = () => {
               <Typography variant="caption">
                 {value?.stratagyData?.symboleSelection}
               </Typography>
+              </div>
+              <div className="w-full">
+                <Button className="w-full" appearance="primary" onClick={()=>{alert("Unable to establish websocket connection")}}>
+                  Run Strategy
+                </Button>
               </div>
               
             </Card>

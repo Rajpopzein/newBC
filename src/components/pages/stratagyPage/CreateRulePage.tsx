@@ -14,12 +14,13 @@ import {
 import { useState } from "react";
 import { Formik, Form } from "formik";
 import axios from "axios";
+import { toast } from "react-toastify";
 // import * as Yup from "yup";
 
 const CreateRulePage = () => {
   const [symboleOptions] = useState<string[]>(["SBIN", "RELIANCE"]);
   const [orderTypes] = useState<string[]>(["Live"]);
-  const [strategySettings] = useState<string[]>(["stratagy 1", "stratagy 2"]);
+  const [strategySettings] = useState<string[]>(["supertrend"]);
   const [selectedStrategyOption, setSelectedStrategyOptions] =
     useState<any>("null");
   const [timeFrame] = useState<string[]>(["1m", "2m"]);
@@ -28,7 +29,7 @@ const CreateRulePage = () => {
   const [selectFactor, setSelectFactor] = useState<string>("null");
   const token = localStorage.getItem("token");
 
-  let initialValues = {
+  const initialValues = {
     strategyName: "",
     description: "",
     symboleSelection: [],
@@ -51,16 +52,9 @@ const CreateRulePage = () => {
         max: "",
         step: "",
       },
-      qty: "",
-      Pyramid: {
-        default: "",
-        min: "",
-        max: "",
-        step: "",
-      },
     },
     stratagy2: {
-      name: "",
+      name: "high_low",
       lookBack: "",
       lookBackOption: {
         default: "",
@@ -68,13 +62,13 @@ const CreateRulePage = () => {
         max: "",
         step: "",
       },
-      qty: "",
-      Pyramid: {
-        default: "",
-        min: "",
-        max: "",
-        step: "",
-      },
+    },
+    qty: "",
+    Pyramid: {
+      default: "",
+      min: "",
+      max: "",
+      step: "",
     },
     targetSettings: {
       mode: "false",
@@ -104,7 +98,7 @@ const CreateRulePage = () => {
     if (e.target.name === "stratagy2.lookBack") setSelectPeriod(e.target.value);
   };
 
-  const handleSubmit = async (data: unknown, resetForm: ()=> void) => {
+  const handleSubmit = async (data: unknown, resetForm: () => void) => {
     console.log(data);
     const stratagy = await axios.post("http://localhost:8000/data", data, {
       headers: {
@@ -113,6 +107,16 @@ const CreateRulePage = () => {
     });
     if (stratagy.status === 200) {
       resetForm();
+      toast.success("Stratagy Created Successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
     console.log(stratagy);
   };
@@ -128,7 +132,7 @@ const CreateRulePage = () => {
               handleSubmit(values, resetForm)
             }
           >
-            {({ values, handleChange}) => (
+            {({ values, handleChange }) => (
               <Form>
                 <div className="grid grid-cols-2 gap-[1%] w-full">
                   <Card className="p-3">
@@ -210,7 +214,7 @@ const CreateRulePage = () => {
                 <div className="mt-6 grid gap-[1%] mb-4">
                   <div className="grid grid-cols-1 gap-[1%] mb-4">
                     {selectedStrategyOption &&
-                      selectedStrategyOption === "stratagy 1" && (
+                      selectedStrategyOption === "supertrend" && (
                         <Card className="p-3 flex gap-4">
                           <div className="flex gap-3">
                             <Input
@@ -286,7 +290,7 @@ const CreateRulePage = () => {
                               </Card>
                             )}
                           </div>
-                          <div>
+                          {/* <div>
                             <Input
                               label="Qty"
                               className="mb-4"
@@ -294,28 +298,13 @@ const CreateRulePage = () => {
                               value={values.stratagy1.qty}
                               onChange={handleChange}
                             />
-                          </div>
-                          <Card className="p-3">
-                            <p className="text-small text-default-500 mb-2">
-                              Pyramid
-                            </p>
-                            <div className="flex gap-3">
-                              <Input
-                                label="Default"
-                                name="stratagy1.Pyramid.default"
-                                value={values.stratagy1.Pyramid.default}
-                                onChange={handleChange}
-                              />
-                              {/* <Input label="Min" name="min" />
-                              <Input label="Max" name="max" />
-                              <Input label="Step" name="step" /> */}
-                            </div>
-                          </Card>
-                        </Card>
+                          </div> */}
+
+                          {/* </Card>
                       )}
                     {selectedStrategyOption === "stratagy 2" && (
-                      <Card className="p-3 flex gap-4">
-                        <div className="flex gap-3">
+                      <Card className="p-3 flex gap-4"> */}
+                          {/* <div className="flex gap-3">
                           <Input
                             label="Name"
                             className="mb-1"
@@ -323,61 +312,61 @@ const CreateRulePage = () => {
                             value={values.stratagy2.name}
                             onChange={handleChange}
                           />
-                        </div>
-                        {/* <Input label="Qty" name="qty" /> */}
-                        <div className="flex gap-4">
-                          <Select
-                            label="Look Back"
-                            name="stratagy2.lookBack"
-                            value={values.stratagy2.lookBack}
-                            onChange={(e) => {
-                              handlePeriodChange(e);
-                              handleChange(e);
-                            }}
-                          >
-                            <SelectItem value="lookback" key="lookback">
-                              lookback
-                            </SelectItem>
-                          </Select>
-                        </div>
-                        <div className="flex gap-3">
-                          {selectePeriod != "null" && selectePeriod != "" && (
-                            <Card className="p-3 flex-1">
-                              <div className="flex gap-3">
-                                <Input
-                                  label="Default"
-                                  name="default"
-                                  value={
-                                    values.stratagy2.lookBackOption.default
-                                  }
-                                  onChange={handleChange}
-                                />
-                                {/* <Input label="Min" name="min" />
+                        </div> */}
+                          {/* <Input label="Qty" name="qty" /> */}
+                          <div className="flex gap-4">
+                            <Select
+                              label="Look Back"
+                              name="stratagy2.lookBack"
+                              value={values.stratagy2.lookBack}
+                              onChange={(e) => {
+                                handlePeriodChange(e);
+                                handleChange(e);
+                              }}
+                            >
+                              <SelectItem value="lookback" key="lookback">
+                                lookback
+                              </SelectItem>
+                            </Select>
+                          </div>
+                          <div className="flex gap-3">
+                            {selectePeriod != "null" && selectePeriod != "" && (
+                              <Card className="p-3 flex-1">
+                                <div className="flex gap-3">
+                                  <Input
+                                    label="Default"
+                                    name="stratagy2.lookBackOption.default"
+                                    value={
+                                      values.stratagy2.lookBackOption.default
+                                    }
+                                    onChange={handleChange}
+                                  />
+                                  {/* <Input label="Min" name="min" />
                                 <Input label="Max" name="max" />
                                 <Input label="Step" name="step" /> */}
-                              </div>
-                            </Card>
-                          )}
-                        </div>
-                        <Input label="Qty" className="mb-4" />
-                        <Card className="p-3">
-                          <p className="text-small text-default-500 mb-2">
-                            Pyramid
-                          </p>
-                          <div className="flex gap-3">
-                            <Input
-                              label="Default"
-                              name="stratagy2.Pyramid.default"
-                              value={values.stratagy2.Pyramid.default}
-                              onChange={handleChange}
-                            />
-                            {/* <Input label="Min" name="min" />
+                                </div>
+                              </Card>
+                            )}
+                          </div>
+                          <Input label="Qty" className="mb-4" />
+                          <Card className="p-3">
+                            <p className="text-small text-default-500 mb-2">
+                              Pyramid
+                            </p>
+                            <div className="flex gap-3">
+                              <Input
+                                label="Default"
+                                name="Pyramid.default"
+                                value={values.Pyramid.default}
+                                onChange={handleChange}
+                              />
+                              {/* <Input label="Min" name="min" />
                             <Input label="Max" name="max" />
                             <Input label="Step" name="step" /> */}
-                          </div>
+                            </div>
+                          </Card>
                         </Card>
-                      </Card>
-                    )}
+                      )}
                   </div>
 
                   <Card className="p-3 flex gap-4 h-[100%]">
@@ -500,7 +489,7 @@ const CreateRulePage = () => {
                 </div>
                 <div className="flex gap-3 mb-5">
                   <Button type="submit">Create Strategy</Button>
-                  <Button>Run Strategy</Button>
+                  {/* <Button>Run Strategy</Button> */}
                 </div>
               </Form>
             )}

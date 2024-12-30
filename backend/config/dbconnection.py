@@ -2,8 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-
-dataBaseUrl = "mysql+pymysql://root:1234567@localhost:3309/bullsnew"
+dataBaseUrl = "postgresql+psycopg2://postgres:root@localhost:5432/bullsnew"
 
 engine = create_engine(dataBaseUrl, pool_size=20, max_overflow=0)
 

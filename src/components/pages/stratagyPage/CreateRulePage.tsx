@@ -15,7 +15,7 @@ import { useState } from "react";
 import { Formik, Form } from "formik";
 import axios from "axios";
 import { toast } from "react-toastify";
-// import * as Yup from "yup";
+import * as Yup from "yup";
 
 const CreateRulePage = () => {
   const [symboleOptions] = useState<string[]>(["SBIN", "RELIANCE"]);
@@ -27,6 +27,7 @@ const CreateRulePage = () => {
   const [targetType] = useState<string[]>(["Point", "Percentage"]);
   const [selectePeriod, setSelectPeriod] = useState<string>("null");
   const [selectFactor, setSelectFactor] = useState<string>("null");
+  const [selectLookBack, setSelectLookBack] = useState<string>("null");
   const token = localStorage.getItem("token");
 
   const initialValues = {
@@ -87,6 +88,17 @@ const CreateRulePage = () => {
     },
   };
 
+  const ruleValidation =Yup.object().shape( {
+    strategyName: Yup.string().required("Strategy Name is required"),
+    description: Yup.string().required("Description is required"),
+    symboleSelection: Yup.array().of(Yup.string().oneOf(symboleOptions)).required("Symbol Selection is required"),
+    timeFrame: Yup.string().required("Time Frame is required"),
+    strategyMode: Yup.string().required("Strategy Mode is required"),
+    strategyOption: Yup.string().required("Strategy Option is required"),
+  })
+
+
+
   const handleSelectionChange = (e: ChangeEvent<any>) => {
     setSelectedStrategyOptions(e.target.value);
   };
@@ -95,7 +107,7 @@ const CreateRulePage = () => {
     if (e.target.name === "stratagy1.atrPeriod")
       setSelectPeriod(e.target.value);
     if (e.target.name === "stratagy1.factor") setSelectFactor(e.target.value);
-    if (e.target.name === "stratagy2.lookBack") setSelectPeriod(e.target.value);
+    if (e.target.name === "stratagy2.lookBack") setSelectLookBack(e.target.value);
   };
 
   const handleSubmit = async (data: unknown, resetForm: () => void) => {
@@ -128,11 +140,12 @@ const CreateRulePage = () => {
           <h1 className="text-2xl font-bold mb-4">Create Strategy</h1>
           <Formik
             initialValues={initialValues}
+            validationSchema={ruleValidation}
             onSubmit={(values, { resetForm }) =>
               handleSubmit(values, resetForm)
             }
           >
-            {({ values, handleChange }) => (
+            {({ values, handleChange, errors, touched, }) => (
               <Form>
                 <div className="grid grid-cols-2 gap-[1%] w-full">
                   <Card className="p-3">
@@ -143,6 +156,8 @@ const CreateRulePage = () => {
                         className="mb-4"
                         value={values.strategyName}
                         onChange={handleChange}
+                        isInvalid={!!errors.strategyName && touched.strategyName}
+                        errorMessage={errors.strategyName}
                       />
                       <Textarea
                         maxRows={4}
@@ -151,6 +166,8 @@ const CreateRulePage = () => {
                         name="description"
                         onChange={handleChange}
                         value={values.description}
+                        isInvalid={!!errors.description && touched.description}
+                        errorMessage={errors.description}
                       />
                     </div>
                   </Card>
@@ -162,6 +179,8 @@ const CreateRulePage = () => {
                         name="symboleSelection"
                         onChange={handleChange}
                         value={values.symboleSelection}
+                        isInvalid={!!errors.symboleSelection && touched.symboleSelection}
+                        errorMessage={errors.symboleSelection}
                       >
                         {symboleOptions &&
                           symboleOptions.map((data) => (
@@ -173,6 +192,8 @@ const CreateRulePage = () => {
                         name="timeFrame"
                         onChange={handleChange}
                         value={values.timeFrame}
+                        isInvalid={!!errors.timeFrame && touched.timeFrame}
+                        errorMessage={errors.timeFrame}
                       >
                         {timeFrame &&
                           timeFrame.map((data) => (
@@ -186,6 +207,8 @@ const CreateRulePage = () => {
                       name="strategyMode"
                       onChange={handleChange}
                       value={values.strategyMode}
+                      isInvalid={!!errors.strategyMode && touched.strategyMode}
+                      errorMessage={errors.strategyMode}
                     >
                       {orderTypes &&
                         orderTypes.map((data) => (
@@ -203,6 +226,8 @@ const CreateRulePage = () => {
                         handleSelectionChange(e);
                         handleChange(e);
                       }}
+                      isInvalid={!!errors.strategyOption && touched.strategyOption}
+                      errorMessage={errors.strategyOption}
                     >
                       {strategySettings &&
                         strategySettings.map((data) => (
@@ -330,7 +355,7 @@ const CreateRulePage = () => {
                             </Select>
                           </div>
                           <div className="flex gap-3">
-                            {selectePeriod != "null" && selectePeriod != "" && (
+                            {selectLookBack != "null" && selectLookBack != "" && (
                               <Card className="p-3 flex-1">
                                 <div className="flex gap-3">
                                   <Input
@@ -392,6 +417,7 @@ const CreateRulePage = () => {
                           name="targetSettings.type"
                           value={values.targetSettings.type}
                           onChange={handleChange}
+                          isDisabled={values.targetSettings.mode==="false" ? true : false}
                         >
                           {targetType &&
                             targetType.map((data) => (
@@ -403,6 +429,7 @@ const CreateRulePage = () => {
                           name="targetSettings.value"
                           value={values.targetSettings.value}
                           onChange={handleChange}
+                          isDisabled={values.targetSettings.mode==="false" ? true : false}
                         />
                       </Card>
                       <Card className="p-4 h-[100%] flex-1">
@@ -425,6 +452,7 @@ const CreateRulePage = () => {
                           name="stoplossSettings.type"
                           value={values.stoplossSettings.type}
                           onChange={handleChange}
+                          isDisabled={values.stoplossSettings.mode==="false" ? true : false}
                         >
                           {targetType &&
                             targetType.map((data) => (
@@ -436,6 +464,7 @@ const CreateRulePage = () => {
                           name="stoplossSettings.value"
                           value={values.stoplossSettings.value}
                           onChange={handleChange}
+                          isDisabled={values.stoplossSettings.mode==="false" ? true : false}
                         />
                       </Card>
                       <Card className="p-4 h-[100%] flex-1">
@@ -459,9 +488,7 @@ const CreateRulePage = () => {
                           name="trailingStoplossSettings.type"
                           value={values.trailingStoplossSettings.type}
                           onChange={handleChange}
-                          isDisabled={
-                            !Boolean(values.trailingStoplossSettings.mode)
-                          }
+                          isDisabled={values.trailingStoplossSettings.mode==="false" ? true : false}
                         >
                           {targetType &&
                             targetType.map((data) => (
@@ -475,6 +502,7 @@ const CreateRulePage = () => {
                           name="trailingStoplossSettings.value"
                           value={values.trailingStoplossSettings.value}
                           onChange={handleChange}
+                          isDisabled={values.trailingStoplossSettings.mode==="false" ? true : false}
                         />
                       </Card>
                     </div>

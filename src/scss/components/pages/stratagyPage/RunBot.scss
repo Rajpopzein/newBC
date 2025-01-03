@@ -1,0 +1,20 @@
+@use "../../../defaults/color_variable" as color_variable;
+
+.runbotmain {
+  .runbtn {
+    background-color: color_variable.$primary !important;
+    &:hover {
+      background-color: color_variable.$side_menu_background;
+    }
+  }
+  .stopbtn {
+    border: 1px solid color_variable.$errored-dark !important;
+    background-color: #fff !important;
+    color : color_variable.$errored-dark !important;
+    
+    &:hover {
+      background-color: color_variable.$errored-dark !important;
+      color: #fff !important;
+    }
+  }
+}

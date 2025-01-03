@@ -7,11 +7,13 @@ import * as Yup from "yup";
 import AuthLayOut from "@/components/layout/AuthLayOut";
 import Navbar from "@/components/landingpage/Navbar";
 import axios from "axios";
+import { toast } from "react-toastify";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Login = () => {
   const navigate = useNavigate();
- 
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -28,13 +30,19 @@ const Login = () => {
     onSubmit: async (values) => {
       console.log(values);
       const payload = { username: values.email, password: values.password };
-      const data = await axios.post("http://localhost:8000/login", payload, {
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      });
-      if(data.status === 200){
-        localStorage.setItem("token",data.data.access_token)
-        navigate("/chart")
+      try{
+        const data = await axios.post(`${BASE_URL}/login`, payload, {
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        });
+        if (data.status === 200) {
+          localStorage.setItem("token", data.data.access_token);
+          navigate("/chart");
+        }
+      }catch(error) {
+        console.error(error)
+        toast.error(error.message)
       }
+     
       console.log(data);
     },
   });

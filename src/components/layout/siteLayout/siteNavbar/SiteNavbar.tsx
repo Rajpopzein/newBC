@@ -24,9 +24,9 @@ const SiteNavbar = ({active=1}:activekey) => {
         <ListItem onClick={()=>{navigate('/runningbot')}} className={`flex justify-between w-[100%] gap-3 list-menu-item ${active == 2 ? "active" : ""}`}>
           <GiNanoBot className="text-2xl" /> Active Bots
         </ListItem>
-        <ListItem className="flex justify-between w-[100%] gap-5 list-menu-item">
+        {/* <ListItem className="flex justify-between w-[100%] gap-5 list-menu-item">
           <PiStrategy className="text-2xl" /> Create Strategy
-        </ListItem>
+        </ListItem> */}
       </List>
     </div>
   );

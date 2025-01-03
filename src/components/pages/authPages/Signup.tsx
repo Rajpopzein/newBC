@@ -5,7 +5,9 @@ import { BiSolidChevronLeft } from "react-icons/bi";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
 import Navbar from "@/components/landingpage/Navbar";
-import axios from 'axios';
+import axios from "axios";
+
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Signup = () => {
   const formik = useFormik({
@@ -31,9 +33,9 @@ const Signup = () => {
         .oneOf([Yup.ref("password")], "Passwords must match")
         .required("Confirm Password is required"),
     }),
-    onSubmit: async(values) => {
+    onSubmit: async (values) => {
       console.log(values);
-      const regData = await axios.post("http://localhost:8000/register", values)
+      const regData = await axios.post(`${BASE_URL}/register`, values);
       if (regData.status === 200) {
         navigate("/login");
       }
@@ -44,7 +46,7 @@ const Signup = () => {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <AuthLayOut>
         <div className="login-form">
           <Typography variant="h5" className="font-bold">

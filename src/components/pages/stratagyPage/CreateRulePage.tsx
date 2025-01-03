@@ -13,9 +13,10 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 import { Formik, Form } from "formik";
-import axios from "axios";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
+import {jwtDecode} from "jwt-decode"
+import api from "../../../config/AxiosConfig.js"
 
 const CreateRulePage = () => {
   const [symboleOptions] = useState<string[]>(["SBIN", "RELIANCE"]);
@@ -29,9 +30,9 @@ const CreateRulePage = () => {
   const [selectFactor, setSelectFactor] = useState<string>("null");
   const [selectLookBack, setSelectLookBack] = useState<string>("null");
   const token = localStorage.getItem("token");
-
+  const tokenDecode = jwtDecode(token)
   const initialValues = {
-    user_id: token.email,
+    user_id: tokenDecode?.email,
     broker: {
       name: "zerodha",
       user: "EZD562",
@@ -76,7 +77,7 @@ const CreateRulePage = () => {
     },
     qty: null,
     Pyramid: {
-      default: 0,
+      default: null,
       min: "",
       max: "",
       step: "",
@@ -124,8 +125,8 @@ const CreateRulePage = () => {
   };
 
   const handleSubmit = async (data: unknown, resetForm: () => void) => {
-    console.log(data);
-    const stratagy = await axios.post("http://localhost:8000/data", data, {
+    const payLoad = {"params": data}
+    const stratagy = await api.post("http://localhost:8000/data", payLoad, {
       headers: {
         Authorization: `bearer ${token}`,
       },
@@ -421,6 +422,7 @@ const CreateRulePage = () => {
                                 name="Pyramid.default"
                                 value={values.Pyramid.default}
                                 onChange={handleChange}
+                                type="number"
                               />
                               {/* <Input label="Min" name="min" />
                             <Input label="Max" name="max" />

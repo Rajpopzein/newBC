@@ -40,7 +40,7 @@ const Login = () => {
         }
       }catch(error) {
         console.error(error)
-        toast.error(error.message)
+        toast.error(error.response.data.detail)
       }
      
       console.log(data);
